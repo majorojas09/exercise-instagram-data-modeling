@@ -8,20 +8,14 @@ from eralchemy import render_er
 
 Base = declarative_base()
 
-class Login(Base):
-    __tablename__ = 'login'
-    username = Column(String(250), primary_key=True)
-    password = Column(String(250), nullable=False)
-    
 class Register(Base):
     __tablename__ = 'userRegister'
     userId = Column(Integer, primary_key=True)
     firstName = Column(String(250), nullable=False)
     lastName = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
-    username_User = Column(String(250), ForeignKey('login.username'))
+    username_User = Column(String(250), nullable=False)
     password_User = Column(String(250), nullable=False)
-    login = relationship(Login)
 
 class Post(Base):
     __tablename__ = 'post'
